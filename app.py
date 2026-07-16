@@ -1,5 +1,4 @@
 import gradio as gr
-
 from agent import SQLAgent
 
 agent = SQLAgent()
@@ -9,7 +8,7 @@ def ask(question):
     if not question or not question.strip():
         return "", "Please enter a question."
     try:
-         sql, result = agent.answer(question)
+         sql, result = agent.LCEL_Answer(question)
          return  sql, result
     except Exception as e:
         return "", f"Error: {type(e).__name__}: {e}"
