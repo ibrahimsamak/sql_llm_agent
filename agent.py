@@ -50,8 +50,7 @@ class SQLAgent:
         chain = (
                     RunnablePassthrough
                     .assign(query=write_query | RunnableLambda(helper.clean_sql) )
-                    .assign(result=itemgetter("query") 
-                    | execute_query)
+                    .assign(result=itemgetter("query") | execute_query)
                     .assign(answer=answer)
                 )
         res = chain.invoke({'question': question})
