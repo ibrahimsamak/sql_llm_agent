@@ -1,4 +1,4 @@
-# 🧠 SQL Agent — Text to SQL
+# SQL Agent — Text to SQL
 
 Ask questions about a school database in **plain English**. The agent turns your
 question into an SQL query using an LLM, runs it against a local SQLite database,
@@ -9,7 +9,7 @@ generated.
 
 ---
 
-## ✨ Features
+## Features
 
 - **Natural language → SQL** — powered by LangChain's `create_sql_query_chain` and OpenAI.
 - **Plain-English answers** — the raw SQL result is rephrased into a readable sentence.
@@ -21,7 +21,7 @@ generated.
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 ```
 ┌────────────┐   question    ┌──────────────────────┐
@@ -55,18 +55,18 @@ generated.
 
 ---
 
-## 🗂️ Project Structure
+## Project Structure
 
-| File | Purpose |
-|------|---------|
-| `app.py` | Gradio web UI — wires the input box to `SQLAgent.LCEL_Answer()`. |
-| `agent.py` | `SQLAgent` — the text-to-SQL logic (LangChain + OpenAI); `answer()` and `LCEL_Answer()`. |
-| `helper.py` | `clean_sql()` — normalizes LLM output down to one runnable SQL statement. |
-| `sql/SQLManager.py` | Creates the SQLite connection and the `students`, `subjects`, `student_marks` tables. |
-| `sql/Student.py` | CRUD for students. |
-| `sql/Subject.py` | Create / list subjects. |
-| `sql/Mark.py` | Add / list student marks. |
-| `school.db` | SQLite database file. |
+| File                | Purpose                                                                                  |
+| ------------------- | ---------------------------------------------------------------------------------------- |
+| `app.py`            | Gradio web UI — wires the input box to `SQLAgent.LCEL_Answer()`.                         |
+| `agent.py`          | `SQLAgent` — the text-to-SQL logic (LangChain + OpenAI); `answer()` and `LCEL_Answer()`. |
+| `helper.py`         | `clean_sql()` — normalizes LLM output down to one runnable SQL statement.                |
+| `sql/SQLManager.py` | Creates the SQLite connection and the `students`, `subjects`, `student_marks` tables.    |
+| `sql/Student.py`    | CRUD for students.                                                                       |
+| `sql/Subject.py`    | Create / list subjects.                                                                  |
+| `sql/Mark.py`       | Add / list student marks.                                                                |
+| `school.db`         | SQLite database file.                                                                    |
 
 ### Database schema
 
@@ -76,7 +76,7 @@ generated.
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### 1. Requirements
 
@@ -118,7 +118,7 @@ Open the URL Gradio prints (default **http://127.0.0.1:7860**).
 
 ---
 
-## 💬 Example Questions
+## Example Questions
 
 - "How many students do we have?"
 - "What is the average age of students?"
@@ -126,9 +126,3 @@ Open the URL Gradio prints (default **http://127.0.0.1:7860**).
 - "List all student names."
 
 ---
-
-## ⚠️ Notes
-
-- Every question makes live OpenAI API calls, which may incur cost.
-- The agent generates and executes SQL against a **local** database — do not point it
-  at a production database without adding proper safeguards.
